@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 import { fetchPeopleData } from "../actions/peopleData-actions.ts";
 import { RootState } from "../store.ts";
 
@@ -29,17 +28,7 @@ const initialState: PeopleDataState = {
 export const peopleDataSlice = createSlice({
     name: "peopleInfo",
     initialState,
-    reducers: {
-        replacePeopleData(state: PeopleDataState, action: PayloadAction<PersonalInfo[]>) :void {
-            state.peopleData = action.payload ? action.payload : [];
-        },
-        setIsLoading(state: PeopleDataState, action: PayloadAction<boolean>): void {
-            state.isLoading = action.payload;
-        },
-        setIsError(state: PeopleDataState, action: PayloadAction<boolean>): void {
-            state.isError = action.payload;
-        },
-    },
+    reducers: {},
     extraReducers: builder => {
         builder
             .addCase(fetchPeopleData.pending, state => {
@@ -58,7 +47,3 @@ export const peopleDataSlice = createSlice({
 
 export default peopleDataSlice.reducer;
 export const peopleAllData = (state: RootState) => state.peopleData;
-export const {
-    replacePeopleData,
-    setIsLoading,
-    setIsError } = peopleDataSlice.actions;
