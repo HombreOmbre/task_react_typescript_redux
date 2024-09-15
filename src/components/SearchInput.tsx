@@ -12,10 +12,11 @@ export const SearchInput: React.FC<{
         const selectedType: string = searchType.current!.value;
 
         if (selectedType.trim().length === 0) {
-            setSearchInput('');
+            setSearchType('');
         }
 
         setSearchType(selectedType);
+        setSearchInput('');
     }
 
     const submitHandler = (e: FormEvent): void => {
@@ -31,7 +32,7 @@ export const SearchInput: React.FC<{
         inputSearch.current!.value = '';
     }
 
-    const selectVal: string | undefined = searchType.current?.value;
+    const selectVal: string = searchType.current && searchType.current?.value.length > 0 ? searchType.current?.value + 's' : '...';
 
     return (
         <div className={classes.searchContainer}>
