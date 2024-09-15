@@ -1,0 +1,19 @@
+.loadingComponent {
+    animation: bounce 1.5s linear infinite;
+}
+
+.loadingHeader {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #eee;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
