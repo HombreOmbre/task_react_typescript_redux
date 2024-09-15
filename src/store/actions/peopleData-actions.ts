@@ -5,9 +5,9 @@ export const fetchPeopleData = createAsyncThunk(
     async () => {
              const response: Response = await fetch('https://jsonplaceholder.typicode.com/users');
 
-                if (!response.ok) {
-                    throw new Error(response.statusText);
-                }
+             if (!response.ok) {
+                 throw new Error(response.statusText);
+             }
 
-                return response.json();
+            return response.json();
     });
