@@ -3,14 +3,15 @@ import { fetchPeopleData } from "../actions/peopleData-actions.ts";
 import { RootState } from "../store.ts";
 
 export interface PersonalInfo {
-    id: number,
+    id: string,
     name: string,
     username: string,
     email: string,
     address: object,
     phone: string
     website: string
-    company: object
+    company: object,
+    [key: string]: string | object,
 }
 
 export interface PeopleDataState {
@@ -38,7 +39,7 @@ export const peopleDataSlice = createSlice({
                 state.isLoading = false;
                 state.peopleData = action.payload;
             })
-            .addCase(fetchPeopleData.rejected, state => {
+            .addCase(fetchPeopleData.rejected, (state) => {
                 state.isError = true;
                 state.isLoading = false;
             })
